@@ -2,10 +2,42 @@ import React, { useState, useEffect } from "react";
 import { Preloader } from "./Preloader";
 import { API_KEY, API_URL } from "../config.js";
 import { GoodsList } from "./GoodsList";
+import { Cart } from "./Cart";
+import { BasketList } from "./BasketList";
 
 const Shop = () => {
   const [goods, setGoods] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [order, setOrder] = useState([]);
+  const [isBasketShow, setBasketShow] = useState(false);
+
+  const addGood = (good) => {
+    const itemIndex = order.findIndex(
+      (orderItem) => orderItem.mainId === good.mainId
+    );
+
+    if (itemIndex < 0) {
+      const newGood = { ...good, quantity: 1 };
+      setOrder([...order, newGood]);
+    } else {
+      const newOrder = order.map((orderItem, index) => {
+        if (index === itemIndex) {
+          return {
+            ...orderItem,
+            quantity: orderItem.quantity + 1,
+          };
+        } else {
+          return orderItem;
+        }
+      });
+      setOrder(newOrder);
+    }
+  };
+
+  const handleBasketShow = () => {
+    setBasketShow(!isBasketShow);
+  };
+
   useEffect(() => {
     fetch(API_URL, {
       headers: {
@@ -29,8 +61,11 @@ const Shop = () => {
 
   return (
     <div className="container content">
-      {loading ? <Preloader /> : <GoodsList goods={goods} />}
-      <button></button>
+      <Cart quantity={order.length} handleBasketShow={handleBasketShow} />
+      {loading ? <Preloader /> : <GoodsList goods={goods} addGood={addGood} />}
+      {isBasketShow && (
+        <BasketList order={order} handleBasketShow={handleBasketShow} />
+      )}
     </div>
   );
 };

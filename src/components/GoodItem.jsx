@@ -1,9 +1,10 @@
 import React from "react";
 
-const GoodItem = (good) => {
-  const { /* mainId, */ displayName, displayDescription } = good;
-  const { background } = good.displayAssets[0];
-  const price = good.price.regularPrice;
+const GoodItem = (props) => {
+  const { mainId, displayName, displayDescription, addGood } = props;
+  const { background } = props.displayAssets[0];
+  const price = props.price.regularPrice;
+
   return (
     <div>
       <div className="card">
@@ -15,7 +16,18 @@ const GoodItem = (good) => {
           <p>{displayDescription}</p>
         </div>
         <div className="card-action">
-          <button className="btn blue-grey darken-4">Купить</button>
+          <button
+            className="btn blue-grey darken-4"
+            onClick={() =>
+              addGood({
+                mainId,
+                displayName,
+                price,
+              })
+            }
+          >
+            Купить
+          </button>
           <span className="right" style={{ fontSize: "1.8rem" }}>
             {price} руб.
           </span>
