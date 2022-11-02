@@ -2,7 +2,7 @@ function Footer() {
   let year = new Date().getFullYear();
 
   return (
-    <footer className="page-footer indigo darken-2">
+    <footer className="page-footer blue-grey darken-3">
       <div className="footer-copyright">
         <div className="container">
           © {year} Copyright Text

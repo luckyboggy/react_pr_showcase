@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <nav className="indigo darken-4">
+    <nav className="blue-grey darken-4">
       <div className="nav-wrapper">
         <a href="!#" className="brand-logo">
           React Shop
