@@ -34,6 +34,11 @@ const Shop = () => {
     }
   };
 
+  const removeFromBacket = (itemId) => {
+    const newOrder = order.filter(item => item.mainId !== itemId);
+    setOrder(newOrder);
+  }
+
   const handleBasketShow = () => {
     setBasketShow(!isBasketShow);
   };
@@ -64,7 +69,7 @@ const Shop = () => {
       <Cart quantity={order.length} handleBasketShow={handleBasketShow} />
       {loading ? <Preloader /> : <GoodsList goods={goods} addGood={addGood} />}
       {isBasketShow && (
-        <BasketList order={order} handleBasketShow={handleBasketShow} />
+        <BasketList order={order} handleBasketShow={handleBasketShow} removeFromBacket={removeFromBacket}/>
       )}
     </div>
   );
