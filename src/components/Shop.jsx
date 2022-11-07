@@ -35,9 +35,24 @@ const Shop = () => {
   };
 
   const removeFromBacket = (itemId) => {
-    const newOrder = order.filter(item => item.mainId !== itemId);
+    const newOrder = order.filter((item) => item.mainId !== itemId);
     setOrder(newOrder);
-  }
+  };
+
+  const plusQuantity = (itemId, n) => {
+    const newOrder = order.map((item) => {
+      if (item.mainId === itemId) {
+        const newQuantity = item.quantity + n;
+        return {
+          ...item,
+          quantity: newQuantity >= 0 ? newQuantity : 0,
+        };
+      } else {
+        return item;
+      }
+    });
+    setOrder(newOrder);
+  };
 
   const handleBasketShow = () => {
     setBasketShow(!isBasketShow);
@@ -69,7 +84,12 @@ const Shop = () => {
       <Cart quantity={order.length} handleBasketShow={handleBasketShow} />
       {loading ? <Preloader /> : <GoodsList goods={goods} addGood={addGood} />}
       {isBasketShow && (
-        <BasketList order={order} handleBasketShow={handleBasketShow} removeFromBacket={removeFromBacket}/>
+        <BasketList
+          order={order}
+          handleBasketShow={handleBasketShow}
+          removeFromBacket={removeFromBacket}
+          plusQuantity={plusQuantity}
+        />
       )}
     </div>
   );

@@ -65,12 +65,24 @@ nav {
   animation: show 500ms ease-in-out;
 }
 
+.delete {
+  cursor: pointer;
+  color: #424242;
+}
+
 .basket_close {
   cursor: pointer;
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
   color: #fff;
+}
+
+.basket-quantity {
+  cursor: pointer;
+  color: #424242;
+  vertical-align: middle;
+  margin: 0 15px;
 }
 
 @keyframes show {
