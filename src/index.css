@@ -36,7 +36,8 @@ nav {
   flex-grow: 1;
 }
 
-.cart {
+.cart,
+.toast-container {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
@@ -76,6 +77,11 @@ nav {
   top: 0.5rem;
   right: 0.5rem;
   color: #fff;
+}
+
+.basket_down {
+  height: 55px;
+  justify-content: center;
 }
 
 .basket-quantity {
