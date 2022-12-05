@@ -36,20 +36,56 @@ nav {
   flex-grow: 1;
 }
 
-.cart,
-.toast-container {
+.cart {
   position: fixed;
-  bottom: 2rem;
   right: 2rem;
   cursor: pointer;
   z-index: 5;
   padding: 1rem;
+  bottom: 2rem;
 }
+
+.toast-container {
+  position: fixed;
+  right: 1rem;
+  cursor: pointer;
+  z-index: 5;
+  padding: 1rem;
+  top: 0.5rem;
+  animation: fade-in 250ms ease-in-out;
+}
+
 @media (min-width: 767px) {
   .cart {
     top: 5rem;
     bottom: unset;
   }
+  .toast-container {
+    top: unset;
+    bottom: 2rem;
+    right: 2rem;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
+
+.basket {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 111;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .backet-list {
