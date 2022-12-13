@@ -1,6 +1,6 @@
 {
   "name": "react_pr_showcase",
-  "home": "https://luckyboggy.github.io/react_pr_showcase",
+  "homepage": "https://luckyboggy.github.io/react_pr_showcase",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ShopContext } from "../context";
 
 const GoodItem = (props) => {
-  const { mainId, displayName, displayDescription, addGood } = props;
+  const { mainId, displayName, displayDescription } = props;
   const { background } = props.displayAssets[0];
   const price = props.price.regularPrice;
+
+  const { addGood } = useContext(ShopContext);
 
   return (
     <div>
